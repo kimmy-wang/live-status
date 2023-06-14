@@ -11,11 +11,12 @@ export async function fetchTwitchChannelStatus(channel: string): Promise<LiveSta
   const data = await fetch(url);
   const $ = cheerio.load(await data.text());
 
-  const liveNode = $('body div.tw-channel-status-text-indicator').first();
-  const viewersNode = $('body').find('p[data-a-target="animated-channel-viewers-count"]');
+  const liveNode = $('body div.tw-channel-status-text-indicator');
+  console.log('liveNode', liveNode.html());
+  const viewersNode = $('body p[data-a-target="animated-channel-viewers-count"]');
   const isLiving = !!liveNode;
+  console.log('viewersNode', viewersNode.html());
   if (viewersNode) {
-    console.log('viewersNode', viewersNode.first(), viewersNode.first().find('span'), viewersNode.first().find('span').length, viewersNode.find('span').text());
     const viewers = parseInt(viewersNode.find('span').text().trim(), 10);
     return { isLiving, viewers };
   }
