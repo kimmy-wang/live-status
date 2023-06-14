@@ -15,9 +15,11 @@ export async function fetchTwitchChannelStatus(channel: string): Promise<LiveSta
   const viewersNode = $('body').find('p[data-a-target="animated-channel-viewers-count"]');
   const isLiving = !!liveNode;
   if (viewersNode) {
-    console.log(viewersNode.find('span').length, viewersNode.find('span').text());
+    console.log('viewersNode', viewersNode, viewersNode.find('span'), viewersNode.find('span').length, viewersNode.find('span').text());
     const viewers = parseInt(viewersNode.find('span').text().trim(), 10);
     return { isLiving, viewers };
   }
   return { isLiving };
 }
+
+fetchTwitchChannelStatus('thebs_chen').then(console.info).catch(console.error);
