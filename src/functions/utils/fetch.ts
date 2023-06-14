@@ -14,8 +14,9 @@ export async function fetchTwitchChannelStatus(channel: string): Promise<LiveSta
   const liveNode = $('body div.tw-channel-status-text-indicator');
   const viewersNode = $('body p[data-a-target="animated-channel-viewers-count"]');
   const isLiving = !!liveNode;
+  console.log('viewersNode', viewersNode);
   if (viewersNode) {
-    const viewers = parseInt(viewersNode.find('span').first().text().trim(), 10);
+    const viewers = parseInt(viewersNode.children().first().text().trim(), 10);
     return { isLiving, viewers };
   }
   return { isLiving };
