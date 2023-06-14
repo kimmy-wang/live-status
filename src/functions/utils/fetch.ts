@@ -2,6 +2,7 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 
 export interface LiveStatus {
+  channel: string;
   isLiving: boolean;
   viewers?: number;
 }
@@ -18,9 +19,9 @@ export async function fetchTwitchChannelStatus(channel: string): Promise<LiveSta
   console.log('viewersNode', viewersNode.html());
   if (viewersNode) {
     const viewers = parseInt(viewersNode.find('span').text().trim(), 10);
-    return { isLiving, viewers };
+    return { channel, isLiving, viewers };
   }
-  return { isLiving };
+  return { channel, isLiving };
 }
 
 fetchTwitchChannelStatus('thebs_chen').then(console.info).catch(console.error);
