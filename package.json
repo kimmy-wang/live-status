@@ -1,24 +1,21 @@
 {
-  "name": "node-typescript-boilerplate",
-  "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "name": "live-status",
+  "private": true,
+  "description": "Live Status.",
   "type": "module",
   "engines": {
-    "node": ">= 18.12 <19"
+    "node": ">= 16 <19"
   },
   "devDependencies": {
-    "@types/jest": "~29.5",
+    "@types/lodash": "^4.14.195",
     "@types/node": "~18",
     "@typescript-eslint/eslint-plugin": "~5.59",
     "@typescript-eslint/parser": "~5.59",
     "eslint": "~8.38",
     "eslint-config-prettier": "~8.8",
-    "eslint-plugin-jest": "~27.2",
-    "jest": "~29.5",
     "prettier": "~2.8",
     "rimraf": "~5.0",
     "ts-api-utils": "~0.0.44",
-    "ts-jest": "~29.1",
     "typescript": "~5.0"
   },
   "scripts": {
@@ -29,16 +26,16 @@
     "build:watch": "tsc -w -p tsconfig.json",
     "build:release": "npm run clean && tsc -p tsconfig.release.json",
     "lint": "eslint . --ext .ts --ext .mts",
-    "test": "jest --coverage",
-    "prettier": "prettier --config .prettierrc --write .",
-    "test:watch": "jest --watch"
+    "prettier": "prettier --config .prettierrc --write ."
   },
-  "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
-  "license": "Apache-2.0",
+  "author": "Kimmy <kw214@users.noreply.github.com>",
+  "license": "MIT",
   "dependencies": {
+    "@netlify/functions": "^1.6.0",
+    "badges": "^4.28.0",
+    "cheerio": "1.0.0-rc.12",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.11",
     "tslib": "~2.5"
-  },
-  "volta": {
-    "node": "18.12.1"
   }
 }

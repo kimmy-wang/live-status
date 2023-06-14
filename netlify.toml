@@ -1,0 +1,12 @@
+[build]
+  functions = "src/functions"
+
+[[redirects]]
+  from = "/"
+  to = "/.netlify/functions/twitch"
+  status = 200
+
+[[redirects]]
+  from = '/*'
+  to = '/.netlify/functions/:splat'
+  status = 200
